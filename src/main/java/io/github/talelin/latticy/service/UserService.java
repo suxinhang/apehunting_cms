@@ -92,6 +92,8 @@ public interface UserService extends IService<UserDO> {
      */
     UserDO getUserByUsername(String username);
 
+    UserDO selectInviteByUsername(String username);
+
     /**
      * 根据用户名检查用户是否存在
      *

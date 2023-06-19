@@ -41,4 +41,14 @@ public interface UserMapper extends BaseMapper<UserDO> {
      * @return 分页数据
      */
     IPage<UserDO> selectPageByGroupId(LinPage<UserDO> pager, Integer groupId, Integer rootGroupId);
+
+
+    /**
+     * 通过用户名查找分享码
+     * @param username
+     * @return invite
+     * */
+    int selectInviteByUsername(String username);
+
+
 }

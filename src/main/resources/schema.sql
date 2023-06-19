@@ -108,6 +108,7 @@ DROP TABLE IF EXISTS lin_user;
 CREATE TABLE lin_user
 (
     id          int(10) unsigned NOT NULL AUTO_INCREMENT,
+    invite      VARCHAR(50) NOT NULL COMMENT '来源',
     username    varchar(24)      NOT NULL COMMENT '用户名，唯一',
     nickname    varchar(24)               DEFAULT NULL COMMENT '用户昵称',
     avatar      varchar(500)              DEFAULT NULL COMMENT '头像url',
@@ -122,7 +123,6 @@ CREATE TABLE lin_user
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci;
-
 -- ----------------------------
 -- 用户授权信息表
 -- id
@@ -163,6 +163,56 @@ CREATE TABLE lin_user_group
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci;
+
+
+-- ----------------------------
+-- 销卖详情表
+-- ----------------------------
+DROP TABLE IF EXISTS lin_order_info;
+CREATE TABLE `lin_order_info`  (
+                                 `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '订单id',
+                                 `invite_id` int (10) DEFAULT NULL,
+                                 `invite` VARCHAR(255) DEFAULT NULL,
+                                 `order_no` varchar(50)  NULL DEFAULT NULL COMMENT '订单编号',
+                                 `user_id` varchar(40) NULL DEFAULT NULL COMMENT '用户id',
+                                 `product_id` bigint NULL DEFAULT NULL COMMENT '支付产品id',
+                                 `total_fee` int NULL DEFAULT NULL COMMENT '订单金额(分)',
+                                 `order_status` varchar(10)  NULL DEFAULT NULL COMMENT '订单状态',
+                                 `points_status` int(4) NULL DEFAULT NULL COMMENT '权益状态： 1已处理 ；0未处理 ',
+                                 `commission_ratio`int (10) NULL DEFAULT NULL COMMENT '返点比例',
+                                 `commission` int NULL DEFAULT NULL COMMENT '返点金额(分)',
+                                 `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                                 `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+                                 `withdrawal status` int(4) NULL DEFAULT NULL COMMENT '提现状态： 1： 未提现 ；2提现中； 3：提现完成',
+                                 PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_general_ci;
+-- ----------------------------
+-- 销卖详情-历史表
+-- ----------------------------
+DROP TABLE IF EXISTS lin_order_info_history;
+CREATE TABLE `lin_order_info_history`  (
+                                   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '订单id',
+                                   `invite_id` int (10) DEFAULT NULL COMMENT '分享ID',
+                                   `invite` VARCHAR(255) DEFAULT NULL COMMENT '分享码',
+                                   `order_no` varchar(50)  NULL DEFAULT NULL COMMENT '订单编号',
+                                   `user_id` varchar(40) NULL DEFAULT NULL COMMENT '用户id',
+                                   `product_id` bigint NULL DEFAULT NULL COMMENT '支付产品id',
+                                   `total_fee` int NULL DEFAULT NULL COMMENT '订单金额(分)',
+                                   `order_status` varchar(10)  NULL DEFAULT NULL COMMENT '订单状态',
+                                   `points_status` int(4) NULL DEFAULT NULL COMMENT '权益状态： 1已处理 ；0未处理 ',
+                                   `commission_ratio`int (10) NULL DEFAULT NULL COMMENT '返点比例',
+                                   `commission` int NULL DEFAULT NULL COMMENT '返点金额(分)',
+                                   `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                                   `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+                                   `withdrawal status` int(4) NULL DEFAULT NULL COMMENT '提现状态： 1： 未提现 ；2提现中； 3：提现完成',
+                                    PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_general_ci;
+
+
 
 -- ----------------------------
 -- 图书表

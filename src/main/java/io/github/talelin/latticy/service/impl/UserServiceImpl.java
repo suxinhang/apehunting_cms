@@ -175,12 +175,22 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         wrapper.lambda().eq(UserDO::getUsername, username);
         return this.getOne(wrapper);
     }
+    @Override
+    public UserDO selectInviteByUsername(String username) {
+        QueryWrapper<UserDO> wrapper = new QueryWrapper<>();
+        wrapper.lambda().eq(UserDO::getUsername, username);
+        return this.getOne(wrapper);
+    }
 
     @Override
     public boolean checkUserExistByUsername(String username) {
         int rows = this.baseMapper.selectCountByUsername(username);
         return rows > 0;
     }
+
+
+
+
 
     @Override
     public boolean checkUserExistByEmail(String email) {

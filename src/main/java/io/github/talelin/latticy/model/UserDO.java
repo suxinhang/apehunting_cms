@@ -44,4 +44,8 @@ public class UserDO extends BaseModel implements Serializable {
      */
     private String email;
 
+    /**
+     * 分享码
+     * */
+    private String invite;
 }
