@@ -206,7 +206,7 @@ CREATE TABLE `lin_order_info_history`  (
                                    `commission` int NULL DEFAULT NULL COMMENT '返点金额(分)',
                                    `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                    `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-                                   `withdrawal status` int(4) NULL DEFAULT NULL COMMENT '提现状态： 1： 未提现 ；2提现中； 3：提现完成',
+                                   `withdrawal_status` int(4) NULL DEFAULT NULL COMMENT '提现状态： 1： 未提现 ；2提现中； 3：提现完成',
                                     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4

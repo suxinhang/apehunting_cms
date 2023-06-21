@@ -1,17 +1,16 @@
 package io.github.talelin.latticy.entity;
 
-
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-
 import java.security.Timestamp;
-import java.time.LocalDateTime;
+import java.util.Date;
+
 
 @Data
-@TableName("lin_order_info")
-public class SaleEntity {
+@TableName("lin_order_info_history")
+public class LinOrderInfoHistoryEntity {
 
-    private Long id;
+//    private Long id;
     private Integer inviteId;
     private String invite;
     private String orderNo;
@@ -23,16 +22,8 @@ public class SaleEntity {
     private Integer commissionRatio;
     private Integer commission;
     private Timestamp createTime;
-    private Timestamp updateTime;
+    private Date updateTime;
     private Integer withdrawalStatus;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Integer getInviteId() {
         return inviteId;
@@ -122,11 +113,11 @@ public class SaleEntity {
         this.createTime = createTime;
     }
 
-    public Timestamp getUpdateTime() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Timestamp updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 
@@ -137,5 +128,4 @@ public class SaleEntity {
     public void setWithdrawalStatus(Integer withdrawalStatus) {
         this.withdrawalStatus = withdrawalStatus;
     }
-
 }
